@@ -1,0 +1,119 @@
+<Window x:Class="ShutIKrol.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Читай, Пиши и не спиши — Вход" Height="520" Width="420"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Background="#1E1E2E">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="InputStyle">
+            <Setter Property="Background" Value="#313244"/>
+            <Setter Property="Foreground" Value="#CDD6F4"/>
+            <Setter Property="BorderBrush" Value="#45475A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="36"/>
+        </Style>
+        <Style TargetType="PasswordBox" x:Key="PwdStyle">
+            <Setter Property="Background" Value="#313244"/>
+            <Setter Property="Foreground" Value="#CDD6F4"/>
+            <Setter Property="BorderBrush" Value="#45475A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="36"/>
+        </Style>
+        <Style TargetType="Button" x:Key="PrimaryBtn">
+            <Setter Property="Background" Value="#89B4FA"/>
+            <Setter Property="Foreground" Value="#1E1E2E"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="12,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Label" x:Key="LblStyle">
+            <Setter Property="Foreground" Value="#A6ADC8"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,8,0,2"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- DB settings button (top-right corner) -->
+        <Button Content="⚙" ToolTip="Настройки подключения к БД"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,8,8,0" Width="32" Height="32"
+                Background="#313244" Foreground="#A6ADC8"
+                BorderThickness="0" FontSize="16" Cursor="Hand"
+                Click="DbSettings_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <StackPanel Margin="40">
+            <!-- Header -->
+            <TextBlock Text="📚" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+            <TextBlock Text="Читай, Пиши и не спиши" Foreground="#CDD6F4" FontSize="18"
+                       FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <!-- Tabs -->
+            <TabControl x:Name="TabCtrl" Background="Transparent" BorderThickness="0">
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Foreground" Value="#A6ADC8"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Padding" Value="16,8"/>
+                    </Style>
+                </TabControl.Resources>
+
+                <!-- Login Tab -->
+                <TabItem Header="Войти">
+                    <StackPanel Margin="0,16,0,0">
+                        <Label Content="Логин" Style="{StaticResource LblStyle}"/>
+                        <TextBox x:Name="LoginBox" Style="{StaticResource InputStyle}"/>
+                        <Label Content="Пароль" Style="{StaticResource LblStyle}"/>
+                        <PasswordBox x:Name="PasswordBox" Style="{StaticResource PwdStyle}"/>
+                        <TextBlock x:Name="LoginError" Foreground="#F38BA8" FontSize="12"
+                                   Margin="0,6,0,0" TextWrapping="Wrap"/>
+                        <Button Content="Войти" Style="{StaticResource PrimaryBtn}"
+                                Margin="0,16,0,0" Click="LoginBtn_Click"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- Register Tab -->
+                <TabItem Header="Регистрация">
+                    <StackPanel Margin="0,16,0,0">
+                        <Label Content="Имя" Style="{StaticResource LblStyle}"/>
+                        <TextBox x:Name="RegName" Style="{StaticResource InputStyle}"/>
+                        <Label Content="Логин" Style="{StaticResource LblStyle}"/>
+                        <TextBox x:Name="RegLogin" Style="{StaticResource InputStyle}"/>
+                        <Label Content="Email" Style="{StaticResource LblStyle}"/>
+                        <TextBox x:Name="RegEmail" Style="{StaticResource InputStyle}"/>
+                        <Label Content="Пароль" Style="{StaticResource LblStyle}"/>
+                        <PasswordBox x:Name="RegPassword" Style="{StaticResource PwdStyle}"/>
+                        <TextBlock x:Name="RegError" Foreground="#F38BA8" FontSize="12"
+                                   Margin="0,6,0,0" TextWrapping="Wrap"/>
+                        <Button Content="Зарегистрироваться" Style="{StaticResource PrimaryBtn}"
+                                Margin="0,16,0,0" Click="RegisterBtn_Click"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</Window>
