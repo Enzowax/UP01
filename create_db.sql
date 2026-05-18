@@ -216,21 +216,21 @@ GO
 
 SET IDENTITY_INSERT [dbo].[Books] ON;
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (4,  N'Потерянное королевство', N'/covers/lost_kingdom.jpg',  4, 0);
+VALUES (4,  N'Потерянное королевство', N'/covers/1.jpg',  4, 0);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (5,  N'Звёзды за горизонтом',  N'/covers/stars_beyond.jpg',  5, 0);
+VALUES (5,  N'Звёзды за горизонтом',  N'/covers/2.jpg',  5, 0);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (6,  N'Теневой детектив',      N'/covers/shadow_det.jpg',    9, 0);
+VALUES (6,  N'Теневой детектив',      N'/covers/3.jpg',  9, 0);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (7,  N'Багряная роза',         N'/covers/crimson_rose.jpg',  4, 0);
+VALUES (7,  N'Багряная роза',         N'/covers/4.jpg',  4, 0);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (8,  N'Тёмные коридоры',       N'/covers/dark_corr.jpg',     5, 1);
+VALUES (8,  N'Тёмные коридоры',       N'/covers/5.jpg',  5, 1);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (9,  N'Империя пыли',          N'/covers/empire_dust.jpg',   9, 0);
+VALUES (9,  N'Империя пыли',          N'/covers/6.jpg',  9, 0);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (10, N'Стальное сердце',       N'/covers/steel_heart.jpg',   4, 0);
+VALUES (10, N'Стальное сердце',       N'/covers/7.jpg',  4, 0);
 INSERT [dbo].[Books] ([Id],[Name],[CoverPath],[AuthorId],[IsFrozen])
-VALUES (11, N'Эхо прошлого',          N'/covers/echoes.jpg',        5, 0);
+VALUES (11, N'Эхо прошлого',          N'/covers/8.jpg',  5, 0);
 SET IDENTITY_INSERT [dbo].[Books] OFF;
 GO
 

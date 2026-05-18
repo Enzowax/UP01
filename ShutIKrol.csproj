@@ -16,4 +16,21 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="covers\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="chapters\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="covers\3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="covers\3.jpg" />
+  </ItemGroup>
+
 </Project>

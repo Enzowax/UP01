@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ShutIKrol.Data;
 using ShutIKrol.Helpers;
 using ShutIKrol.Models;
@@ -35,6 +37,8 @@ namespace ShutIKrol.Pages
             GenresText.Text = "Жанры: " + (_book.Genres.Count > 0 ? string.Join(", ", _book.Genres) : "—");
             RatingText.Text = $"⭐ Средняя оценка: {_book.AvgRating:F1} / 10";
 
+            LoadCover(_book.CoverPath);
+
             FrozenBanner.Visibility = _book.IsFrozen ? Visibility.Visible : Visibility.Collapsed;
 
             // Admin buttons
@@ -55,6 +59,30 @@ namespace ShutIKrol.Pages
 
             LoadChapters();
             LoadReviews();
+        }
+
+        private void LoadCover(string coverPath)
+        {
+            if (string.IsNullOrWhiteSpace(coverPath)) return;
+            try
+            {
+                string full = System.IO.Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    coverPath.TrimStart('/').Replace('/', System.IO.Path.DirectorySeparatorChar));
+
+                if (!System.IO.File.Exists(full)) return;
+
+                var bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.CacheOption = BitmapCacheOption.OnLoad;
+                bmp.UriSource = new Uri(full);
+                bmp.EndInit();
+                bmp.Freeze();
+
+                CoverBorder.Background = new ImageBrush(bmp) { Stretch = Stretch.UniformToFill };
+                CoverPlaceholder.Visibility = Visibility.Collapsed;
+            }
+            catch { }
         }
 
         private void LoadChapters()
